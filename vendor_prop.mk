@@ -7,8 +7,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.audio.fluence.speaker=false \
 	persist.vendor.audio.fluence.voicecall=true \
 	persist.vendor.audio.fluence.voicerec=true \
+	persist.vendor.audio.hw.binder.size_kbyte=1024 \
 	persist.vendor.audio.hifi.int_codec=true \
 	persist.vendor.audio.ras.enabled=false \
+	ro.af.client_heap_size_kbyte=7168 \
 	ro.vendor.audio.sdk.fluencetype=fluence  \
 	ro.vendor.audio.sdk.ssr=false \
 	vendor.audio.dolby.ds2.enabled=false \
@@ -35,13 +37,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	bt.max.hfpclient.connections=1 \
 	persist.bt.a2dp.aac_disable=true \
+	persist.bt.hfp.playbackforvr=false \
+	persist.bt.hfp.playbackforvoip=false \
 	persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
-	qcom.bluetooth.soc=cherokee \
+	vendor.qcom.bluetooth.soc=cherokee \
 	ro.bluetooth.emb_wp_mode=true \
 	ro.bluetooth.wipower=true
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
+	persist.camera.eis.enable=1 \
 	persist.camera.expose.aux=1 \
 	persist.camera.HAL3.enabled=1 \
 	persist.camera.preview.ubwc=0 \
@@ -88,6 +93,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.sf.enable_hwc_vds=1 \
+	debug.sf.early_phase_offset_ns=5000000 \
 	debug.sf.hw=1 \
 	debug.sf.latch_unsignaled=1 \
 	debug.gralloc.enable_fb_ubwc=1 \
@@ -96,6 +102,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.demo.hdmirotationlock=false \
 	ro.opengles.version=196610 \
 	ro.sf.lcd_density=480 \
+	sdm.debug.rotator_downscale=1 \
 	vendor.display.enable_default_color_mode=1
 
 # LED
@@ -188,16 +195,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.data.df.mux_count=8 \
 	persist.data.df.iwlan_mux=9 \
 	persist.data.df.dev_name=rmnet_usb0
+	persist.vendor.radio.add_power_save=1
 
 # Sensor
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.sdk.sensors.gestures=false \
-	ro.vendor.sensors.dev_ori=true \
-	ro.vendor.sensors.pmd=true \
-	ro.vendor.sensors.sta_detect=true \
-	ro.vendor.sensors.mot_detect=true \
-	ro.vendor.sensors.facing=false \
-	ro.vendor.sensors.cmc=false
+	ro.vendor.qti.sdk.sensors.gestures=false \
+	ro.vendor.qti.sensors.dev_ori=true \
+	ro.vendor.qti.sensors.pmd=true \
+	ro.vendor.qti.sensors.sta_detect=true \
+	ro.vendor.qti.sensors.mot_detect=true \
+	ro.vendor.qti.sensors.facing=false \
+	ro.vendor.qti.sensors.cmc=false
 
 # Skip Validate Disable
 PRODUCT_PROPERTY_OVERRIDES += \
