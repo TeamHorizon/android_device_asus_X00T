@@ -35,6 +35,7 @@ vendor/lib/rfsa/adsp/libvpp_svc_skel.so
 
 # Alarm - from jasmine - PKQ1.180904.001 V10.0.1.0.PDIMIFJ
 framework/vendor.qti.hardware.alarm-V1.0-java.jar|7d8b2303fd4fe74b21c458f13d52a38587e4eb50
+-vendor/app/PowerOffAlarm/PowerOffAlarm.apk|c6ac3bd60b196cbc69fd51a532fcbcf2f4521a67
 vendor/bin/power_off_alarm|f973dabbdba85ece5115d4beb457cb37887e4358
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|1300f2aacbcd159a2587abc1f38031d9c1f1beed
 vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc
@@ -42,9 +43,6 @@ vendor/lib/hw/vendor.qti.hardware.alarm@1.0-impl.so|0b6cfa8af4a0a056f9f4d57b53df
 vendor/lib/vendor.qti.hardware.alarm@1.0.so|08a4c042506ca9f0eda1d2fec18a025950a03399
 vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so|7d163c35a9deee2801070ed50c6625709c3e0b65
 vendor/lib64/vendor.qti.hardware.alarm@1.0.so|1594b679eb1c791e0f4e0dbb9115b599a8553401
-
-# Amplifier calibration - from X00Q - 15.0619.1810.73
-vendor/bin/SpeakerCalibrationTest|db92fe9a33f3924883b0aea42967fad714d8115f
 
 # ANT+ (system) - from enchilada - PKQ1.180716.001
 lib/com.qualcomm.qti.ant@1.0.so|fcd6a7130c480bfe4e4d9cc00702ed8444cddc82
@@ -1405,7 +1403,7 @@ vendor/lib64/libvpptestutils.so|b6b417fc29f48e55d2c39f7487b51ceafff79ea9
 
 # NFC
 -vendor/app/SmartcardService/SmartcardService.apk
-vendor/firmware/libpn553_fw.so
+vendor/firmware/libpn553_fw.so:vendor/lib/libpn553_fw.so
 
 # Open mobile API
 etc/permissions/org.simalliance.openmobileapi.xml
@@ -1702,14 +1700,6 @@ vendor/lib64/sensors.native.so
 vendor/lib64/sensors.ssc.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
-# Sensors HIDL
-lib/android.hardware.sensors@1.0.so
-lib64/android.hardware.sensors@1.0.so
-vendor/bin/hw/android.hardware.sensors@1.0-service
-vendor/etc/init/android.hardware.sensors@1.0-service.rc
-vendor/lib/hw/android.hardware.sensors@1.0-impl.so
-vendor/lib64/hw/android.hardware.sensors@1.0-impl.so
-
 # Sensors calibration
 vendor/etc/calmodule.cfg
 vendor/lib/libcalmodule_common.so
@@ -1757,7 +1747,9 @@ vendor/etc/qvop/cmudict.bin
 vendor/etc/qvop/noisesample.bin
 vendor/etc/qvop/poc_64_hmm.gmm
 vendor/lib/libqvop-service.so
+vendor/lib/vendor.qti.voiceprint@1.0.so
 vendor/lib64/libqvop-service.so
+vendor/lib64/vendor.qti.voiceprint@1.0.so
 
 # VR
 lib/libvr_amb_engine.so
