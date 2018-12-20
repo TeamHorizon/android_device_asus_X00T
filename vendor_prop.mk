@@ -11,6 +11,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.audio.hifi.int_codec=true \
 	persist.vendor.audio.ras.enabled=false \
 	ro.af.client_heap_size_kbyte=7168 \
+	ro.config.media_vol_steps=25 \
+	ro.config.vc_call_vol_steps=7 \
 	ro.vendor.audio.sdk.fluencetype=fluence  \
 	ro.vendor.audio.sdk.ssr=false \
 	vendor.audio.dolby.ds2.enabled=false \
@@ -96,7 +98,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	debug.sf.early_phase_offset_ns=5000000 \
 	debug.sf.hw=1 \
 	debug.sf.latch_unsignaled=1 \
-	debug.gralloc.enable_fb_ubwc=1 \
+	vendor.gralloc.enable_fb_ubwc=1 \
 	debug.hwui.use_buffer_age=false \
 	dev.pm.dyn_samplingrate=1 \
 	persist.demo.hdmirotationlock=false \
@@ -209,7 +211,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Skip Validate Disable
 PRODUCT_PROPERTY_OVERRIDES += \
-	sdm.debug.disable_skip_validate=1
+	vendor.display.disable_skip_validate=1
 
 # Shutdown
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -185,7 +185,7 @@ PRODUCT_PACKAGES += \
 
 # GPS / Location
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.1-impl-qti \
+    android.hardware.gnss@1.0-impl-qti \
     libcurl \
     libgnss \
     libgnsspps \
@@ -238,11 +238,6 @@ PRODUCT_COPY_FILES += \
 # Keylayout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl
-
-# Keymaster HAL
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -309,6 +304,7 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libaacwrapper \
     libc2dcolorconvert \
     libmm-omxcore \
     libOmxAacEnc \
@@ -341,7 +337,6 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    emmc_prop_init.sh \
     init.class_main.sh \
     init.crda.sh \
     init.mdm.sh \
@@ -462,6 +457,13 @@ PRODUCT_PACKAGES += \
 # VNDK-SP:
 PRODUCT_PACKAGES += \
     vndk-sp
+
+# WFD
+PRODUCT_PACKAGES += \
+    libnl
+
+PRODUCT_BOOT_JARS += \
+    WfdCommon
 
 # WiFi
 PRODUCT_PACKAGES += \
