@@ -55,5 +55,5 @@ PRODUCT_VENDOR_PROPERTY_BLACKLIST := \
     ro.vendor.product.name
 
 # XenonHD maintainer
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.xenonhd.maintainer=krasCGQ
