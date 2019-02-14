@@ -1,5 +1,5 @@
 # 
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2018-2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -57,6 +57,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vr.high_performance.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level-1.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute-0.xml \
@@ -161,7 +162,8 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.1-service.clearkey
 
 # Exclude TOF sensor from InputManager
 PRODUCT_COPY_FILES += \
@@ -249,7 +251,7 @@ PRODUCT_PACKAGES += \
 
 # LiveDisplay native
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@1.0-service-sdm
+    vendor.lineage.livedisplay@2.0-service-sdm
 
 # Low power Whitelist
 PRODUCT_COPY_FILES += \
@@ -316,7 +318,6 @@ PRODUCT_PACKAGES += \
     libOmxSwVencHevc \
     libOmxVdec \
     libOmxVenc \
-    libstagefright_wfd \
     libstagefrighthw
 
 # Overlays
@@ -338,27 +339,16 @@ PRODUCT_COPY_FILES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.class_main.sh \
-    init.crda.sh \
-    init.mdm.sh \
-    init.qcom.class_core.sh \
-    init.qcom.coex.sh \
-    init.qcom.crashdata.sh \
-    init.qcom.early_boot.sh \
-    init.qcom.efs.sync.sh \
     init.qcom.post_boot.sh \
-    init.qcom.sdio.sh \
     init.qcom.sensors.sh \
     init.qcom.sh \
-    init.qcom.syspart_fixup.sh \
     init.qcom.usb.sh \
-    init.qcom.wifi.sh \
-    init.qti.fm.sh \
     init.qti.ims.sh \
     init.qti.qseecomd.sh \
-    qca6234-service.sh \
+    move_time_data.sh \
+    move_wifi_data.sh \
     fstab.qcom \
     init.msm.usb.configfs.rc \
-    init.qcom.factory.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.target.rc \
@@ -381,9 +371,9 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.0 \
-    android.hardware.radio@1.1 \
-    android.hardware.radio.deprecated@1.0 \
+    android.hardware.radio@1.2 \
+    android.hardware.radio.config@1.0 \
+    android.hardware.secure_element@1.0 \
     rild \
     librmnetctl \
     libxml2 \
@@ -442,6 +432,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtinyxml2
 
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
+
 # USB
 PRODUCT_PACKAGES += \
 	android.hardware.usb@1.0-service.basic
@@ -457,6 +451,12 @@ PRODUCT_PACKAGES += \
 # VNDK-SP:
 PRODUCT_PACKAGES += \
     vndk-sp
+
+# VR
+PRODUCT_PACKAGES += \
+    android.hardware.vr@1.0-impl \
+    android.hardware.vr@1.0-service \
+    vr.sdm660
 
 # WFD
 PRODUCT_PACKAGES += \

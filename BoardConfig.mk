@@ -45,7 +45,7 @@ TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := kryo
+TARGET_2ND_CPU_VARIANT := cortex-a73
 
 TARGET_USES_64_BIT_BINDER := true
 
@@ -54,7 +54,7 @@ TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 TARGET_OTA_ASSERT_DEVICE := X00TD,X00T
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 earlycon=msm_serial_dm,0xc170000 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=1 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3 loop.max_part=7
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 earlycon=msm_serial_dm,0xc170000 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=1 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
@@ -65,7 +65,6 @@ TARGET_KERNEL_SOURCE := kernel/asus/sdm660
 TARGET_KERNEL_CONFIG := X00T_defconfig
 TARGET_KERNEL_VERSION := 4.4
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_VERSION := 8.0.6
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
@@ -118,9 +117,7 @@ BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 
-
 # Bluetooth
-BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_BTNV := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
@@ -148,7 +145,6 @@ TARGET_CRYPTFS_HW_PATH ?= vendor/qcom/opensource/cryptfs_hw
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 TARGET_USES_GRALLOC1 := true
@@ -170,9 +166,6 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 
-# Extended Filesystem Support
-TARGET_EXFAT_DRIVER := sdfat
-
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
@@ -188,12 +181,6 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
-
-# Init
-TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
-
-# Keystore
-TARGET_PROVIDES_KEYMASTER := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -217,10 +204,15 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 
 PRODUCT_VENDOR_MOVE_ENABLED := true
 TARGET_COPY_OUT_VENDOR := vendor
-PRODUCT_FULL_TREBLE_OVERRIDE := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USES_MKE2FS := true
+
+BOARD_ROOT_EXTRA_SYMLINKS := \
+    /mnt/vendor/persist:/persist \
+    /vendor/bt_firmware:/bt_firmware \
+    /vendor/dsp:/dsp \
+    /vendor/firmware_mnt:/firmware
 
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
@@ -245,14 +237,13 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # RIL
 TARGET_RIL_VARIANT := caf
-PROTOBUF_SUPPORTED := true
-DISABLE_RILD_OEM_HOOK := false
+DISABLE_RILD_OEM_HOOK := true
 
 # Seccomp
 BOARD_SECCOMP_POLICY := $(DEVICE_PATH)/seccomp
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2018-11-01
+VENDOR_SECURITY_PATCH := 2019-01-01
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk

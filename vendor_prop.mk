@@ -88,10 +88,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.fuse_sdcard=true
 
-# GMS
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.com.google.clientidbase.ms=android-asus-tpin
-
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.sf.enable_hwc_vds=1 \
@@ -120,7 +116,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	media.stagefright.enable-qcp=true \
 	media.stagefright.enable-scan=true \
 	mm.enable.smoothstreaming=true \
-	mm.enable.qcom_parser=13631487 \
+	vendor.mm.enable.qcom_parser=13631487 \
 	mmp.enable.3g2=true \
 	persist.mm.enable.prefetch=true \
 	vendor.vidc.enc.disable_bframes=1 \
@@ -128,6 +124,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	vendor.vidc.enc.disable.pq=false \
 	vidc.enc.dcvs.extra-buff-count=2 \
 	vidc.enc.target_support_bframe=1
+
+# Memory optimizations
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.vendor.qti.sys.fw.bservice_enable=true
 
 # Misc
 PRODUCT_PROPERTY_OVERRIDES += \
