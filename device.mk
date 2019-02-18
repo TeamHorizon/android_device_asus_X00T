@@ -344,7 +344,6 @@ PRODUCT_PACKAGES += \
     init.qcom.sh \
     init.qcom.usb.sh \
     init.qti.ims.sh \
-    init.qti.qseecomd.sh \
     move_time_data.sh \
     move_wifi_data.sh \
     fstab.qcom \
@@ -403,6 +402,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
     $(LOCAL_PATH)/configs/sensors/android.hardware.sensors@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.sensors@1.0-service.rc
+
+# System properties
+-include $(LOCAL_PATH)/system_prop.mk
 
 # Telephony
 PRODUCT_PACKAGES += \
