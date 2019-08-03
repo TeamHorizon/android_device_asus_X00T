@@ -388,7 +388,7 @@ PRODUCT_BOOT_JARS += \
 
 # QCOM
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/privapp-permissions-qti.xml
+    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
 
 # QMI
 PRODUCT_PACKAGES += \
@@ -441,6 +441,10 @@ PRODUCT_COPY_FILES += \
 # Touchscreen
 PRODUCT_PACKAGES += \
     libtinyxml2
+
+# Touch HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.X00T
 
 # Trust HAL
 PRODUCT_PACKAGES += \
